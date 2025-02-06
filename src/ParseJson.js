@@ -9,6 +9,8 @@ function ParseJson(json) {
 
   const jsonArray = json.body.items.item;
 
+  console.log(jsonArray);
+
   //i는 시간대
   for (let i = 6; i <= 18; i++) {
     i = i % 24;
