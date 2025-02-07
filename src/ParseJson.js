@@ -1,4 +1,5 @@
 function ParseJson(json) {
+  console.log(json);
   let string;
 
   let time;
@@ -6,8 +7,7 @@ function ParseJson(json) {
   const coatTime = [];
 
   const array = [];
-
-  const jsonArray = json.body.items.item;
+  const jsonArray = json.response.body.items.item;
 
   console.log(jsonArray);
 
@@ -36,21 +36,6 @@ function ParseJson(json) {
         }
       }
     }
-  }
-
-  //이러고 이제 coatTime을 검사해서 배열이 비었으면 코트 시간대 없음
-  //배열 순회하면서 처음, 마지막 것만 빼고 가운데 ~ 붙여서
-
-  //코트 가능 시간대는 *~*시, *~*시 입니다 라고 나오게 하기
-
-  if (coatTime.length == 0) {
-    string = "오늘의 코트 가능 시간은 없습니다.";
-  } else {
-    string = "오늘의 코트 가능 시간대는 ";
-    for (const al of coatTime) {
-      string += al[0] + "~" + al[al.length - 1] + "시 ";
-    }
-    string += "입니다";
   }
 
   return string;
