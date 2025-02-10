@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 function Test() {
-  let res;
-  const getXMLfromAPI = async () => {
+  async function getXMLfromAPI() {
+    let res;
     const today = new Date();
     const year = today.getFullYear();
     const month = (today.getMonth() + 1).toString().padStart(2, "0");
@@ -34,15 +33,16 @@ function Test() {
         })
         .then((data) => {
           console.log(data);
-          return JSON.parse(data);
         });
-      res = response;
+      const json = response.json();
+      res = json;
     } catch (error) {
       console.log(error);
     }
-  };
+    return res;
+  }
 
-  return res;
+  return getXMLfromAPI();
 }
 
 export default Test;
