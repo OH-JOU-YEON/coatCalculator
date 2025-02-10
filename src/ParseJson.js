@@ -1,5 +1,4 @@
-function ParseJson(json) {
-  console.log(json);
+async function ParseJson(promise) {
   let string;
 
   let time;
@@ -7,9 +6,7 @@ function ParseJson(json) {
   const coatTime = [];
 
   const array = [];
-  const jsonArray = json.response.body.items.item;
-
-  console.log(jsonArray);
+  const jsonArray = promise.json();
 
   //i는 시간대
   for (let i = 6; i <= 18; i++) {
@@ -24,7 +21,7 @@ function ParseJson(json) {
     //반복문 돌면서 기온이 9도에서 11도면 array에 집어넣고 아니면 안집어넣고 이전에 있던 모든 것들을 뺀다
     //뺀 것들을 새 배열에 펼쳐넣고 배열의 길이가 2이상이면 그 배열을 coatTime에 넣는다
 
-    for (const el of jsonArray) {
+    for (const el in jsonArray) {
       if (el.baseTime == time && el.category == "TMP") {
         if (parseInt(el.fcstValue) >= 9 || parseInt(el.fcstValue) <= 11) {
           array.push(i);
@@ -35,6 +32,16 @@ function ParseJson(json) {
           array.length = 0;
         }
       }
+    }
+  }
+
+  if (coatTime.length == 0) {
+    string = "오늘의 코트 가능 시간대는 없습니다";
+  } else {
+    let tempString;
+    for (const coat of coatTime) {
+      tempString += coat[0] + "~" + coat[coat.length - 1] + " ";
+      string = "오늘의 코트 가능 시간대는 " + tempString + " 입니다";
     }
   }
 

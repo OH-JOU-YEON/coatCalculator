@@ -9,8 +9,6 @@ function GetTemp() {
   coatTitle.innerText = string;
 
   coatTitle.removeAttribute("onClick");
-
-  console.log(Test());
 }
 
 export default GetTemp;
