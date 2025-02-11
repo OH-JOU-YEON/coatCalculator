@@ -7,7 +7,7 @@ async function Test() {
   const baseurl =
     "https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
   const key =
-    "a2oztIG5JsxHBXVNjE53UbaiMeal7ZmM2CQpxcCd9bvmhEvcDgE%2FTALYpGxEI7Dso%2F4BHROoWZVQGcrUiHUPLQ%3D%3D";
+    ;
   const params = {
     // 필요한 query params를 {} 형태에 담아준다.
     pageNo: 1,
