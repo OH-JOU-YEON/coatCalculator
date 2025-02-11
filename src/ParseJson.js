@@ -1,4 +1,4 @@
-async function ParseJson(promise) {
+function ParseJson(promise) {
   let string;
 
   let time;
@@ -6,7 +6,9 @@ async function ParseJson(promise) {
   const coatTime = [];
 
   const array = [];
-  const jsonArray = promise.json();
+  const jsonArray = async (promise) => {
+    return await promise.json();
+  };
 
   //i는 시간대
   for (let i = 6; i <= 18; i++) {
